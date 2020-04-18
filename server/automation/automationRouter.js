@@ -22,4 +22,14 @@ router.post('/removeSmartDevice',(req,res)=>{
     })
 })
 
+router.get('/listAllSmartDevice',(req,res)=>{
+    automationController.listAllSmartDevices()
+    .then((resp)=>{
+        res.send(resp)
+    })
+    .catch((err)=>{
+        res.send("Error",err)
+    })
+})
+
 module.exports = router;

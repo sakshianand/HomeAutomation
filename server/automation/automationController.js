@@ -17,7 +17,7 @@ removeSmartDevice = (deviceData)=>{
 }
 
 listAllSmartDevices = ()=>{
-    return automationSchema.findAll()
+    return automationSchema.find()
     .then((data)=>{
         return data
     })
@@ -31,4 +31,4 @@ listAllSmartDevices = ()=>{
     
 
 
-module.exports={addSmartDevice:addSmartDevice,removeSmartDevice:removeSmartDevice}
+module.exports={addSmartDevice:addSmartDevice,removeSmartDevice:removeSmartDevice,listAllSmartDevices:listAllSmartDevices}
