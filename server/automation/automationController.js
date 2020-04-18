@@ -6,9 +6,29 @@ addSmartDevice = (deviceData)=>{
     devices.operation=deviceData.operation
     return devices.save()
 }
+removeSmartDevice = (deviceData)=>{
+    return automationSchema.findOne({ device_name:deviceData.device, operation:deviceData.operation})
+    .then((data)=>{ 
+        return automationSchema.remove(data)
+    })
+    .catch((err)=>{
+        console.log("error:",err); 
+    });
+}
+
+listAllSmartDevices = ()=>{
+    return automationSchema.findAll()
+    .then((data)=>{
+        return data
+    })
+    .catch((err)=>{
+        console.log("error",err);
+        
+    })
+}
         
     
     
 
 
-module.exports={addSmartDevice:addSmartDevice}
+module.exports={addSmartDevice:addSmartDevice,removeSmartDevice:removeSmartDevice}
