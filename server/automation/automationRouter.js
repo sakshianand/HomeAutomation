@@ -7,7 +7,7 @@ router.post('/addSmartDevice',(req,res)=>{
     automationController.addSmartDevice(data)
     .then(response=>res.send(response))
     .catch(err=>{
-        console.log("error in adding smart device",err);
+        console.log("error in adding smart device");
     })
 })
 
@@ -24,6 +24,17 @@ router.post('/removeSmartDevice',(req,res)=>{
 
 router.get('/listAllSmartDevice',(req,res)=>{
     automationController.listAllSmartDevices()
+    .then((resp)=>{
+        res.send(resp)
+    })
+    .catch((err)=>{
+        res.send("Error",err)
+    })
+})
+
+router.post('/performOperation',(req,res)=>{
+    let data = req.body
+    automationController.performOperation(data)
     .then((resp)=>{
         res.send(resp)
     })
