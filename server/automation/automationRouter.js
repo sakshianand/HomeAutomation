@@ -32,4 +32,5 @@ router.get('/listAllSmartDevice',(req,res)=>{
     })
 })
 
+
 module.exports = router;
