@@ -1,17 +1,21 @@
 var automationSchema = require("./automationSchema.js");
 
+//Add smart device
 addSmartDevice = (deviceData) => {
   var devices = new automationSchema();
   devices.device_name = deviceData.device;
   devices.operation = deviceData.operation;
-  return devices.save()
-  .then((data)=>{
-      return data
-  })
-  .catch(()=>{
-      return ("Device cannot be added ",err)
-  });
+  return devices
+    .save()
+    .then((data) => {
+      return data;
+    })
+    .catch(() => {
+      return "Device cannot be added ", err;
+    });
 };
+
+//Remove smart device
 removeSmartDevice = (deviceData) => {
   return automationSchema
     .findOne({
@@ -26,6 +30,7 @@ removeSmartDevice = (deviceData) => {
     });
 };
 
+//List all smart device
 listAllSmartDevices = () => {
   return automationSchema
     .find()
@@ -37,6 +42,7 @@ listAllSmartDevices = () => {
     });
 };
 
+//Perform operation on smart device
 performOperation = (deviceData) => {
   return automationSchema
     .find({ device_name: deviceData.device })
